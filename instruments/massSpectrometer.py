@@ -1,9 +1,12 @@
-import os
 import pyvisa
+
+from .utils import ReadUntil
 
 class LEYSPECView100S:
     def __init__(self, adapter, **settings):
         self.inst = self.connect_LEYSPECView100S(adapter, **settings)
+
+        self.ReadUntil = ReadUntil(self.inst)
 
         self.cr = '\r'   # Carriage Return. chr(13)
         self.lf = '\n'   # Line Feed. chr(10)
@@ -62,7 +65,7 @@ class LEYSPECView100S:
 
         w = self.inst.write(command)    # Send message
 
-        response = self.inst.read(termination = self.lf) # Read response
+        response = self.ReadUntil.read_until(expected = self.lf) # Read response
         print("Response = ", response)
         data = self.decode_response(response)
 

@@ -30,7 +30,16 @@ class FujiTemperatureController:
         return temperature
 
 
+    # ========================     ATTRIBUTE    ============================
+    #########################  READ TEMPERATURE  ###########################
+    # ======================================================================
+
     def make_reading(self):
+        """
+        Returns a float. Measures the temperature.
+        """
         return self.read_temperature()
+
+    # ======================================================================
 
 

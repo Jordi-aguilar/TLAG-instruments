@@ -120,7 +120,14 @@ class MCC1_controller:
         r = self.send_command(command)
         return r
 
+    # ========================     ATTRIBUTE     ===========================
+    ######################### CHECKS IF MOTOR IS MOVING ####################
+    # ======================================================================
+
     def check_axis_standstill(self):
+        """
+        Returns True if motor is moving. Resturs False if motor is Standstill.
+        """
         command = "X=H"
         success, standstill = self.send_command(command)
         if success:
@@ -128,6 +135,9 @@ class MCC1_controller:
                 return True
             elif standstill == "N":
                 return False
+
+    # ======================================================================
+
 
     def decode_response(self, response):
         response_decoded = response.decode()
@@ -152,8 +162,6 @@ class MCC1_controller:
         success, message = self.decode_response(response)
 
         return success, message
-
-    # ======================================================================
 
     # ========================     ATTRIBUTE    ============================
     ###########################  READ POSITION  ############################
