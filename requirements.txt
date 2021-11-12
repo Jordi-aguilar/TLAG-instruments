@@ -1,0 +1,9 @@
+pyserial
+pyvisa
+pymeasure
+numpy
+matplotlib
+minimalmodbus
+pyqtgraph
+pandas
+multiprocess
